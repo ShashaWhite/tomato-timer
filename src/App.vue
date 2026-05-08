@@ -313,11 +313,11 @@ const circumference = 2 * Math.PI * 90
 const dashOffset = computed(() => circumference * (1 - progress.value))
 
 const progressColor = computed(() =>
-  timerState.mode === 'work' ? '#e74c3c' : '#52C41A'
+  timerState.mode === 'work' ? 'rgba(231, 76, 60, 0.15)' : 'rgba(82, 196, 26, 0.15)'
 )
 
 const backgroundColor = computed(() =>
-  timerState.mode === 'work' ? 'rgba(231, 76, 60, 0.15)' : 'rgba(82, 196, 26, 0.15)'
+  timerState.mode === 'work' ? '#e74c3c' : '#52C41A'
 )
 
 const modeLabel = computed(() =>
