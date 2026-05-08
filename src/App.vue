@@ -540,7 +540,8 @@ onMounted(() => {
 
 /* 报告面板时移除居中布局，让报告填满 */
 .tomato-timer-app:has(.report-inline) {
-  padding: 0;
+  padding: clamp(16px, 2vh, 32px);
+  padding-bottom: 0;
   justify-content: flex-start;
   height: 100vh;
 }
