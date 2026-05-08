@@ -37,9 +37,11 @@
             fill="none"
             :stroke="progressColor"
             stroke-width="4"
-            :stroke-dasharray="remainingLength"
-            :stroke-dashoffset="dashOffset"
+            :stroke-dasharray="remainingLength + ' ' + circumference"
+            stroke-dashoffset="0"
             class="progress-ring"
+            transform="rotate(-90)"
+            transform-origin="100 100"
           />
         </svg>
         <div class="timer-content">
@@ -308,7 +310,6 @@ const displayBadges = computed(() => achievements.getDisplayBadges(5))
 // Timer display computed - macOS style countdown ring
 const circumference = 2 * Math.PI * 90
 const remainingLength = computed(() => circumference * (1 - progress.value))
-const dashOffset = circumference * 0.25  // Fixed: offset 1/4 circle to start at top
 
 const progressColor = computed(() =>
   timerState.mode === 'work' ? '#e74c3c' : '#52C41A'
