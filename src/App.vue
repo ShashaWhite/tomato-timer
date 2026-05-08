@@ -104,8 +104,8 @@
       </button>
     </div>
 
-    <!-- Daily Goal Progress -->
-    <div class="goal-progress" @click="openGoalEditor">
+    <!-- Daily Goal Progress (hidden) -->
+    <div class="goal-progress" @click="openGoalEditor" style="display: none">
       <span v-if="!settings.state.dailyGoal" class="set-goal-hint">点击设置每日目标</span>
       <template v-else>
         <span>今日进度</span>
