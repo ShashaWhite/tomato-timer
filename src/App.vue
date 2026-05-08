@@ -37,8 +37,8 @@
             fill="none"
             :stroke="progressColor"
             stroke-width="4"
-            :stroke-dasharray="remainingLength + ' ' + circumference"
-            stroke-dashoffset="0"
+            :stroke-dasharray="circumference"
+            :stroke-dashoffset="elapsedLength"
             class="progress-ring"
             transform="rotate(-90)"
             transform-origin="100 100"
@@ -309,6 +309,7 @@ const displayBadges = computed(() => achievements.getDisplayBadges(5))
 
 // Timer display computed - macOS style countdown ring
 const circumference = 2 * Math.PI * 90
+const elapsedLength = computed(() => circumference * progress.value)
 const remainingLength = computed(() => circumference * (1 - progress.value))
 
 const progressColor = computed(() =>
