@@ -37,7 +37,7 @@
             fill="none"
             :stroke="progressColor"
             stroke-width="4"
-            :stroke-dasharray="circumference"
+            :stroke-dasharray="dashArray"
             :stroke-dashoffset="dashOffset"
             class="progress-ring"
             stroke-linecap="round"
@@ -308,16 +308,19 @@ const formattedTotalTime = computed(() => formatDuration(storage.todayStats.tota
 const allBadges = computed(() => achievements.getUnlockedBadges())
 const displayBadges = computed(() => achievements.getDisplayBadges(5))
 
-// Timer display computed
+// Timer display computed - macOS style countdown ring
 const circumference = 2 * Math.PI * 90
-const dashOffset = computed(() => circumference * (1 - progress.value))
+const elapsedLength = computed(() => circumference * progress.value)
+const remainingLength = computed(() => circumference * (1 - progress.value))
+const dashArray = computed(() => `${remainingLength.value} ${elapsedLength.value}`)
+const dashOffset = computed(() => remainingLength.value)
 
 const progressColor = computed(() =>
-  timerState.mode === 'work' ? 'rgba(231, 76, 60, 0.15)' : 'rgba(82, 196, 26, 0.15)'
+  timerState.mode === 'work' ? '#e74c3c' : '#52C41A'
 )
 
 const backgroundColor = computed(() =>
-  timerState.mode === 'work' ? '#e74c3c' : '#52C41A'
+  timerState.mode === 'work' ? 'rgba(231, 76, 60, 0.15)' : 'rgba(82, 196, 26, 0.15)'
 )
 
 const modeLabel = computed(() =>
