@@ -4,7 +4,12 @@ import { formatDate } from '../utils/format'
 
 const STORAGE_KEY = 'tomato-stats-history'
 
+let storageInstance = null
+
 export function useStorage() {
+  if (storageInstance) {
+    return storageInstance
+  }
   const allStats = reactive([])
 
   function loadStats() {
@@ -103,7 +108,7 @@ export function useStorage() {
 
   const todayStats = getTodayStats()
 
-  return {
+  storageInstance = {
     allStats,
     todayStats,
     getHistorySummary,
@@ -115,4 +120,6 @@ export function useStorage() {
       loadStats
     }
   }
+
+  return storageInstance
 }
