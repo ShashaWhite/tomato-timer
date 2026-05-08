@@ -541,34 +541,28 @@ onMounted(() => {
 .select-row {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: clamp(6px, 1vmin, 12px);
 }
 
 .mode-select,
 .subject-select {
-  padding: 6px 12px;
+  padding: clamp(4px, 0.5vmin, 6px) clamp(8px, 1vmin, 12px);
   border: none;
   border-radius: 4px;
-  background-color: #F5F5F5;
+  background-color: transparent;
   color: #666;
-  font-size: 13px;
+  font-size: clamp(12px, 1.4vmin, 14px);
   font-weight: 500;
   font-family: inherit;
   cursor: pointer;
-  height: 32px;
-  min-width: 80px;
+  height: clamp(28px, 3vmin, 32px);
+  width: auto;
   appearance: none;
-}
-
-.subject-select {
-  background-color: transparent;
-  min-width: 40px;
 }
 
 .mode-select:focus,
 .subject-select:focus {
   outline: none;
-  background-color: #E8E8E8;
 }
 
 .timer-section {
