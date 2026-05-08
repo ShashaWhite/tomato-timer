@@ -1,0 +1,132 @@
+/* Base styles for Tomato Timer */
+
+@import './variables.css';
+
+/* Reset and base */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+    Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  font-size: var(--font-size-md);
+  line-height: 1.5;
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#app {
+  max-width: 400px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* Card style */
+.card {
+  background-color: var(--color-bg);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-sm) var(--spacing-md);
+  font-size: var(--font-size-md);
+  font-weight: 500;
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  min-width: 80px;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.btn-primary {
+  background-color: var(--color-primary);
+  color: var(--color-text-light);
+}
+
+.btn-primary:hover {
+  background-color: var(--color-primary-dark);
+}
+
+.btn-secondary {
+  background-color: var(--color-secondary);
+  color: var(--color-text-light);
+}
+
+.btn-secondary:hover {
+  background-color: #7f8c8d;
+}
+
+.btn-warning {
+  background-color: var(--color-warning);
+  color: var(--color-text-light);
+}
+
+.btn-warning:hover {
+  background-color: #d68910;
+}
+
+.btn-success {
+  background-color: var(--color-break);
+  color: var(--color-text-light);
+}
+
+.btn-success:hover {
+  background-color: var(--color-break-dark);
+}
+
+/* Timer complete state */
+.timer-complete {
+  animation: pulse 0.5s ease infinite alternate;
+}
+
+@keyframes pulse {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.02);
+  }
+}
+
+/* Focus styles */
+.btn:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+  :root {
+    --font-size-timer: 36px;
+    --spacing-xl: 24px;
+    --spacing-lg: 16px;
+  }
+}
