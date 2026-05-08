@@ -16,10 +16,10 @@ export function useStorage() {
         if (history.records) {
           allStats.length = 0
           for (const date in history.records) {
-            allStats.push({
+            allStats.push(reactive({
               date,
               ...history.records[date]
-            })
+            }))
           }
         }
       }
