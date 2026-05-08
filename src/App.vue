@@ -120,12 +120,8 @@
       <span class="stats-item">今日 {{ storage.todayStats.completedPomodoros }} 个</span>
       <span class="stats-divider">·</span>
       <span class="stats-item">时长 {{ formattedTotalTime }}</span>
-      <span class="stats-divider">·</span>
-      <span class="stats-item">累计 {{ historySummary.historyDays }} 天</span>
-      <span class="stats-divider">·</span>
-      <span class="stats-item">总计 {{ formatDuration(historySummary.totalAllTime) }}</span>
       <button class="btn-report" @click="showReport = true">报告</button>
-      <button class="btn-clear" @click="clearStats">清空</button>
+      <button class="btn-clear" @click="clearTodayStats">清空</button>
     </div>
     </template>
 
@@ -241,7 +237,7 @@ import { useNotification } from './composables/useNotification'
 import { useSettings } from './composables/useSettings'
 import { useAchievements } from './composables/useAchievements'
 import { useRecords } from './composables/useRecords'
-import { formatDuration } from './utils/format'
+import { formatDuration, formatDate } from './utils/format'
 import ReportPanel from './components/ReportPanel.vue'
 
 const sound = useSound()
@@ -300,7 +296,6 @@ const formattedTime = timer.formattedTime
 const progress = timer.progress
 
 // Stats
-const historySummary = computed(() => storage.getHistorySummary())
 const formattedTotalTime = computed(() => formatDuration(storage.todayStats.totalWorkTime))
 
 // Achievement badges
@@ -458,9 +453,10 @@ function skipTimer() {
   timer.actions.skip()
 }
 
-function clearStats() {
-  if (confirm('确定要清空所有统计数据吗？\n\n将清除：今日完成数、今日时长、累计天数、历史总时长')) {
-    storage.actions.clearAllStats()
+function clearTodayStats() {
+  if (confirm('确定要清空今日统计数据吗？\n\n将清除：今日完成数、今日时长')) {
+    storage.actions.clearTodayStats()
+    records.actions.clearRecordsByDate(formatDate(new Date()))
   }
 }
 

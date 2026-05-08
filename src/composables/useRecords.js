@@ -127,6 +127,11 @@ export function useRecords() {
     }
   }
 
+  function clearRecordsByDate(dateStr) {
+    state.records = state.records.filter(r => r.date !== dateStr)
+    saveRecords()
+  }
+
   function getStatsByTagForRecords(records) {
     const tagStats = {}
     for (const record of records) {
@@ -158,9 +163,11 @@ export function useRecords() {
     updateRecordDiary,
     getStatsByTag,
     getDailyStats,
+    clearRecordsByDate,
     actions: {
       loadRecords,
-      saveRecords
+      saveRecords,
+      clearRecordsByDate
     }
   }
 
