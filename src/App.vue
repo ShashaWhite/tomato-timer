@@ -40,7 +40,6 @@
             :stroke-dasharray="dashArray"
             :stroke-dashoffset="dashOffset"
             class="progress-ring"
-            stroke-linecap="round"
             transform="rotate(-90)"
             transform-origin="100 100"
           />
