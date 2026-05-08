@@ -210,12 +210,15 @@ const diaryRecords = computed(() => {
 }
 
 .report-header {
+  position: sticky;
+  top: 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 12px 16px;
   height: 44px;
-  flex-shrink: 0;
+  background-color: white;
+  z-index: 10;
 }
 
 .report-header h3 {
@@ -269,6 +272,7 @@ const diaryRecords = computed(() => {
   display: flex;
   flex-direction: column;
   gap: 16px;
+  overflow-y: auto;
 }
 
 .summary-section {
