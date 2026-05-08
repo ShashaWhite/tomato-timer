@@ -388,7 +388,7 @@ function handleTimerComplete(state) {
     })
     lastRecord.value = record
 
-    // Show diary modal
+    // Show diary modal (notification will show after diary is closed)
     showDiaryModal.value = true
 
     // Check achievements
@@ -406,16 +406,13 @@ function handleTimerComplete(state) {
     currentSubject.value = ''
   } else {
     breakSuggestion.value = ''
+    // Show break end notification immediately
+    const message = '休息结束，继续专注吧'
+    notification.notify(message)
+    showBanner.value = true
+    bannerMessage.value = message
+    setTimeout(() => showBanner.value = false, 3000)
   }
-
-  const message = state.mode === 'work'
-    ? '专注完成，休息一下吧'
-    : '休息结束，继续专注吧'
-  notification.notify(message)
-
-  showBanner.value = true
-  bannerMessage.value = message
-  setTimeout(() => showBanner.value = false, 3000)
 }
 
 function saveDiary() {
@@ -425,12 +422,26 @@ function saveDiary() {
   diaryText.value = ''
   lastRecord.value = null
   showDiaryModal.value = false
+
+  // Show break notification after diary is closed
+  const message = '专注完成，休息一下吧'
+  notification.notify(message)
+  showBanner.value = true
+  bannerMessage.value = message
+  setTimeout(() => showBanner.value = false, 3000)
 }
 
 function skipDiary() {
   diaryText.value = ''
   lastRecord.value = null
   showDiaryModal.value = false
+
+  // Show break notification after diary is skipped
+  const message = '专注完成，休息一下吧'
+  notification.notify(message)
+  showBanner.value = true
+  bannerMessage.value = message
+  setTimeout(() => showBanner.value = false, 3000)
 }
 
 // Timer control functions
