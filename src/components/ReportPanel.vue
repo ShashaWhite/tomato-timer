@@ -387,9 +387,7 @@ const diaryRecords = computed(() => {
 }
 
 .diary-item {
-  padding: 8px 12px;
-  background-color: #F5F5F5;
-  border-radius: 4px;
+  padding: 4px 0;
   font-size: 12px;
 }
 
