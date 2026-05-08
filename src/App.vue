@@ -542,6 +542,13 @@ onMounted(() => {
 .tomato-timer-app:has(.report-inline) {
   padding: 0;
   justify-content: flex-start;
+  height: 100vh;
+}
+
+.report-inline {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
 }
 
 /* Mode and Subject Select Row */
