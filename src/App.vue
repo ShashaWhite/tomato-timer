@@ -310,7 +310,7 @@ const displayBadges = computed(() => achievements.getDisplayBadges(5))
 
 // Timer display computed
 const circumference = 2 * Math.PI * 90
-const dashOffset = computed(() => circumference * progress.value)
+const dashOffset = computed(() => circumference * (1 - progress.value))
 
 const progressColor = computed(() =>
   timerState.mode === 'work' ? '#e74c3c' : '#52C41A'
