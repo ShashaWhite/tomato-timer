@@ -28,6 +28,7 @@
           <span class="summary-value" :class="comparisonClass">{{ comparisonText }}</span>
           <span class="summary-label">对比上周</span>
         </div>
+        <div class="summary-item summary-placeholder" v-else></div>
       </div>
 
       <!-- Daily Chart - Compact grid for month -->
@@ -213,6 +214,8 @@ const diaryRecords = computed(() => {
   justify-content: space-between;
   align-items: center;
   padding: 12px 16px;
+  height: 44px;
+  flex-shrink: 0;
 }
 
 .report-header h3 {
@@ -276,6 +279,11 @@ const diaryRecords = computed(() => {
 
 .summary-item {
   text-align: center;
+  min-width: 60px;
+}
+
+.summary-placeholder {
+  visibility: hidden;
 }
 
 .summary-label {
