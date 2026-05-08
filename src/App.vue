@@ -21,19 +21,19 @@
     <!-- Timer Display -->
     <div class="timer-section">
       <div class="timer-ring">
-        <svg viewBox="0 0 200 200" class="timer-svg">
+        <svg viewBox="0 0 240 240" class="timer-svg">
           <circle
-            cx="100"
-            cy="100"
-            :r="90"
+            cx="120"
+            cy="120"
+            :r="108"
             fill="none"
             :stroke="backgroundColor"
             stroke-width="4"
           />
           <circle
-            cx="100"
-            cy="100"
-            :r="90"
+            cx="120"
+            cy="120"
+            :r="108"
             fill="none"
             :stroke="progressColor"
             stroke-width="4"
@@ -41,7 +41,7 @@
             stroke-dashoffset="0"
             class="progress-ring"
             transform="rotate(-90)"
-            transform-origin="100 100"
+            transform-origin="120 120"
           />
         </svg>
         <div class="timer-content">
@@ -308,7 +308,7 @@ const allBadges = computed(() => achievements.getUnlockedBadges())
 const displayBadges = computed(() => achievements.getDisplayBadges(5))
 
 // Timer display computed - macOS style countdown ring
-const circumference = 2 * Math.PI * 90
+const circumference = 2 * Math.PI * 108
 const elapsedLength = computed(() => circumference * progress.value)
 const remainingLength = computed(() => circumference * (1 - progress.value))
 
@@ -573,8 +573,8 @@ onMounted(() => {
 
 .timer-ring {
   position: relative;
-  width: clamp(202px, 36vmin, 403px);
-  height: clamp(202px, 36vmin, 403px);
+  width: clamp(242px, 43vmin, 484px);
+  height: clamp(242px, 43vmin, 484px);
 }
 
 .timer-svg {
