@@ -38,7 +38,7 @@
             :stroke="progressColor"
             stroke-width="4"
             :stroke-dasharray="circumference"
-            :stroke-dashoffset="elapsedLength"
+            :stroke-dashoffset="-elapsedLength"
             class="progress-ring"
             transform="rotate(-90)"
             transform-origin="100 100"
